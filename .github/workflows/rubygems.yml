@@ -1,0 +1,28 @@
+name: RubyGems
+
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+
+      - name: Publish
+        run: |
+          mkdir -p $HOME/.gem
+          cf=$HOME/.gem/credentials
+          cp /dev/null $cf
+          chmod 0600 $cf
+          echo -e "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $cf
+          gem build *.gemspec
+          gem push *.gem
+        env:
+          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}

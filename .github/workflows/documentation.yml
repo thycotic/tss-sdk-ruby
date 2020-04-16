@@ -1,0 +1,32 @@
+name: Documentation
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  generate-doc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+
+      - name: Prepare Bundler
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Generate Doc
+        run: |
+          yard doc
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: doc # The folder the action should deploy.
