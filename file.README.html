@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.24
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-tss-sdk-ruby">tss-sdk-ruby</h1>
+
+<p><img src="https://github.com/forced-request/tss-ruby-sdk/workflows/Ruby/badge.svg"></p>
+
+<h1 id="label-Installation">Installation</h1>
+
+<h1 id="label-Usage">Usage</h1>
+
+<h2 id="label-Initialize+via+env+variables+-28best+practice-29">Initialize via env variables (best practice)</h2>
+
+<p>Vault will initialize easily if the following environment variables are defined:</p>
+<ul><li>
+<p><code>TSS_API_USERNAME</code></p>
+</li><li>
+<p><code>TSS_API_PASSWORD</code></p>
+</li><li>
+<p><code>TSS_TENANT</code></p>
+</li></ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vault</span><span class='tstring_end'>&#39;</span></span>
+<span class='comment'># initialize from ENV variables
+</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Server (class)">Server</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server.html#initialize-instance_method" title="Server#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbrace'>{</span>
+    <span class='label'>username:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_API_USERNAME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
+    <span class='label'>password:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_API_PASSWORD</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>tenant:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_TENANT</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='rbrace'>}</span><span class='rparen'>)</span>
+
+<span class='kw'>begin</span>
+    <span class='id identifier rubyid_secret'>secret</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Secret.html" title="Server::Secret (class)">Secret</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'><span class='object_link'><a href="Server/Secret.html#fetch-class_method" title="Server::Secret.fetch (method)">fetch</a></span></span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="AccessDeniedException.html" title="AccessDeniedException (class)">AccessDeniedException</a></span></span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Whoops, looks like we&#39;re unauthorized</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>rescue</span>  <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Something went wrong: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The password is: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_secret'>secret</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>data</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+</div></div>
+
+      <div id="footer">
+  Generated on Thu Apr 16 16:53:17 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.24 (ruby-2.6.6).
+</div>
+
+    </div>
+  </body>
+</html>
