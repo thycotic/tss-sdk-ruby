@@ -60,7 +60,7 @@
       <div id="content"><div id='filecontents'>
 <h1 id="label-tss-sdk-ruby">tss-sdk-ruby</h1>
 
-<p><img src="https://github.com/forced-request/tss-ruby-sdk/workflows/Ruby/badge.svg"></p>
+<p><img src="https://github.com/thycotic/tss-sdk-ruby/workflows/Tests/badge.svg"> <img src="https://github.com/thycotic/tss-sdk-ruby/workflows/Documentation/badge.svg"> <img src="https://github.com/thycotic/tss-sdk-ruby/workflows/RubyGems/badge.svg"> <img src="https://github.com/thycotic/tss-sdk-ruby/workflows/GitHub/badge.svg"></p>
 
 <h1 id="label-Installation">Installation</h1>
 
@@ -70,9 +70,9 @@
 
 <p>Vault will initialize easily if the following environment variables are defined:</p>
 <ul><li>
-<p><code>TSS_API_USERNAME</code></p>
+<p><code>TSS_USERNAME</code></p>
 </li><li>
-<p><code>TSS_API_PASSWORD</code></p>
+<p><code>TSS_PASSWORD</code></p>
 </li><li>
 <p><code>TSS_TENANT</code></p>
 </li></ul>
@@ -80,8 +80,8 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vault</span><span class='tstring_end'>&#39;</span></span>
 <span class='comment'># initialize from ENV variables
 </span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Server (class)">Server</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server.html#initialize-instance_method" title="Server#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbrace'>{</span>
-    <span class='label'>username:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_API_USERNAME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
-    <span class='label'>password:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_API_PASSWORD</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>username:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_USERNAME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
+    <span class='label'>password:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_PASSWORD</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
     <span class='label'>tenant:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_TENANT</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='rbrace'>}</span><span class='rparen'>)</span>
 
@@ -98,7 +98,7 @@
 </div></div>
 
       <div id="footer">
-  Generated on Thu Apr 16 16:55:53 2020 by
+  Generated on Sat Apr 18 03:07:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.6.6).
 </div>
