@@ -1,11 +1,11 @@
 require 'spec_helper'
 RSpec::Expectations.configuration.on_potential_false_positives = :nothing
 
-describe Server do
+describe Tss do
     context 'configuration' do
         it 'can be passed via initialization' do
             expect {
-                server = Server.new({
+                server = Tss::Server.new({
                     username: ENV['TSS_USERNAME'].to_s,
                     password: ENV['TSS_PASSWORD'],
                     tenant: ENV['TSS_TENANT']
@@ -15,7 +15,7 @@ describe Server do
     end
 
     before(:each) do
-        @server = Server.new({
+        @server = Tss::Server.new({
             username: ENV['TSS_USERNAME'],
             password: ENV['TSS_PASSWORD'],
             tenant: ENV['TSS_TENANT']
@@ -31,7 +31,7 @@ describe Server do
         end
 
         it 'requires valid credentials' do
-            @server = Server.new({
+            @server = Tss::Server.new({
                 username: 'fakeusername',
                 password: ENV['TSS_PASSWORD'],
                 tenant: ENV['TSS_TENANT']
@@ -42,9 +42,9 @@ describe Server do
 end
 
 # todo: These tests are too volatile. Shift to mocks
-describe Server::Secret do
+describe Tss::Secret do
     before(:each) do
-        @server = Server.new({
+        @server = Tss::Server.new({
             username: ENV['TSS_USERNAME'],
             password: ENV['TSS_PASSWORD'],
             tenant: ENV['TSS_TENANT']
@@ -53,13 +53,13 @@ describe Server::Secret do
 
     context 'fetch' do
         it 'requires a Server and an id' do
-            expect { Server::Secret.fetch() }.to raise_error(ArgumentError)
-            expect { Server::Secret.fetch(@server) }.to raise_error(ArgumentError)
-            expect { Server::Secret.fetch(@server, 1) }.not_to raise_error(ArgumentError)
+            expect { Tss::Secret.fetch() }.to raise_error(ArgumentError)
+            expect { Tss::Secret.fetch(@server) }.to raise_error(ArgumentError)
+            expect { Tss::Secret.fetch(@server, 1) }.not_to raise_error(ArgumentError)
         end
 
         it 'returns a hash of the secret' do
-            s = Server::Secret.fetch(@server, 1)
+            s = Tss::Secret.fetch(@server, 1)
             expect(s).to be_a(Hash)
 
             expect(s['name']).to eq("Test Secret")
@@ -68,7 +68,7 @@ describe Server::Secret do
         end
 
         it 'raises InvalidSecretException if secret is not found' do
-            expect { Server::Secret.fetch(@server, 999)}.to raise_error(InvalidSecretException)
+            expect { Tss::Secret.fetch(@server, 999)}.to raise_error(InvalidSecretException)
         end
 
     end
