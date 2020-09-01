@@ -1,8 +1,9 @@
 
 class InvalidSecretException < StandardError; end;
 
-# Utilized to fetch secrets from an initialzed +Server+
-class Server::Secret
+module Tss
+  # Utilized to fetch secrets from an initialzed +Server+
+  class Secret
     SECRETS_RESOURCE = "secrets".freeze
   
     # Fetch secrets from the server
@@ -36,3 +37,4 @@ class Server::Secret
       return @secret
     end
   end
+end
