@@ -79,14 +79,14 @@
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vault</span><span class='tstring_end'>&#39;</span></span>
 <span class='comment'># initialize from ENV variables
-</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Server (class)">Server</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Server.html#initialize-instance_method" title="Server#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='lbrace'>{</span>
+</span><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'>Server</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span>
     <span class='label'>username:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_USERNAME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
     <span class='label'>password:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_PASSWORD</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
     <span class='label'>tenant:</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TSS_TENANT</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='rbrace'>}</span><span class='rparen'>)</span>
 
 <span class='kw'>begin</span>
-    <span class='id identifier rubyid_secret'>secret</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Server.html" title="Server (class)">Server</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Server/Secret.html" title="Server::Secret (class)">Secret</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'><span class='object_link'><a href="Server/Secret.html#fetch-class_method" title="Server::Secret.fetch (method)">fetch</a></span></span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_secret'>secret</span> <span class='op'>=</span> <span class='const'>Server</span><span class='op'>::</span><span class='const'>Secret</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='ivar'>@server</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="AccessDeniedException.html" title="AccessDeniedException (class)">AccessDeniedException</a></span></span>
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Whoops, looks like we&#39;re unauthorized</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>rescue</span>  <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
@@ -98,7 +98,7 @@
 </div></div>
 
       <div id="footer">
-  Generated on Sat Apr 18 03:41:35 2020 by
+  Generated on Mon Oct 12 15:23:19 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.6.6).
 </div>
