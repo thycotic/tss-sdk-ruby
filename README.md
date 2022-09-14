@@ -1,3 +1,9 @@
+# PUBLIC ARCHIVE
+
+> ***NOTE***
+> This repo is archived.
+> This is still available under the licensing terms, but is not being actively developed or updated any further. Please see [DelineaXPM](https://github.com/DelineaXPM) for active projects.
+
 # tss-sdk-ruby
 
 ![Tests](https://github.com/thycotic/tss-sdk-ruby/workflows/Tests/badge.svg)
